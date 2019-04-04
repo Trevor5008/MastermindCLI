@@ -6,7 +6,7 @@ namespace Mastermind
     {
         static void Main(string[] args)
         {
-            Console.Write("Welcome to the Mastermind challenge...\n(press enter to continue)\n");
+            Console.Write("Welcome to the Mastermind challenge...\n(press any key to continue)\n");
             Console.ReadKey();
             Console.Clear();
 
@@ -20,7 +20,7 @@ namespace Mastermind
                 masterCombo += num;
             }
 
-            Console.WriteLine(masterCombo);
+            //Console.WriteLine(masterCombo);
 
             while (true)
             {
@@ -49,7 +49,7 @@ namespace Mastermind
 
                 }
                 tryCount++;
-                Console.WriteLine("Press enter to try again...");
+                Console.WriteLine("Press any key to try again...");
                 Console.ReadKey();
                 Console.Clear();
                 
