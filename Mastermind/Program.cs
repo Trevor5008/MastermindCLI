@@ -21,10 +21,10 @@ namespace Mastermind
             }
 
             //Console.WriteLine(masterCombo);
+            int tryCount = 0;
 
             while (true)
             {
-                int tryCount = 0;
 
                 string userInput = "";
 
@@ -49,10 +49,6 @@ namespace Mastermind
 
                 }
                 tryCount++;
-                Console.WriteLine("Press any key to try again...");
-                Console.ReadKey();
-                Console.Clear();
-                
                 if (tryCount == 10)
                 {
                     Console.WriteLine("You're all out of guesses...");
@@ -83,6 +79,10 @@ namespace Mastermind
                     Console.WriteLine();
                     break;
                 }
+
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                Console.Clear();
 
             }
         }
