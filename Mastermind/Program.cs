@@ -6,55 +6,86 @@ namespace Mastermind
     {
         static void Main(string[] args)
         {
-            string userInput = "";
-            Random rnd = new Random();
-            int num = 0;
+            Console.Write("Welcome to the Mastermind challenge...\n(press enter to continue)\n");
+            Console.ReadKey();
+            Console.Clear();
+
             string masterCombo = "";
-            // Prompts the user to enter their first number choice
-            Console.Write("Please enter a number between 1 and 7 (inclusive): ");
-            userInput = Console.ReadLine();
-            for (int i = 0; i < 3; i++)
-            {
-                Console.Write("Please enter another number (same range): ");
-                userInput += Console.ReadLine();
-            }
+            Random rnd = new Random();
 
             for (int i = 0; i < 4; i++)
             {
+                int num = 0;
                 num = rnd.Next(1, 7);
-
                 masterCombo += num;
-
-                // This compares the index position value in the user's input to the same index position
-                // in the randomly generated "mastermind" combo
-                if (userInput.Substring(i, 1) == masterCombo.Substring(i, 1))
-                {
-                    Console.WriteLine("+");
-                }
-                // If the above condition is not met, the program will then check to see if the index position value
-                // is located anywhere in the master combination
-                else if (masterCombo.Contains(userInput.Substring(i,1)))
-                {
-                    Console.WriteLine("-");
-                }
-                // If neither the above conditions are met, the console will display nothing for that index position value
-                Console.WriteLine("");
             }
 
-            string userChoice = "";
-            Console.Write("Would you like to see the correct combination? (Y/N): ");
-            userChoice = Console.ReadLine();
+            Console.WriteLine(masterCombo);
 
-            if(userChoice.ToLower()=="y")
+            while (true)
             {
-                Console.Write(masterCombo);
-                Console.WriteLine();
-            }
-            else {
+                int tryCount = 0;
+
+                string userInput = "";
+
+                for (int x = 0; x < 4; x++)
+                {
+
+                    // Prompts the user to enter their number choice
+                    Console.Write("Please enter a number between 1 and 7 (inclusive): ");
+                    userInput += Console.ReadLine();
+
+                    if (userInput.Substring(x, 1) == masterCombo.Substring(x, 1))
+                    {
+                        Console.Write("+");
+                        Console.WriteLine("");
+                    }
+                    else if (masterCombo.Contains(userInput.Substring(x, 1)))
+                    {
+                        Console.Write("-");
+                        Console.WriteLine("");
+                    }
+                    else { Console.WriteLine(); }
+
+                }
+                tryCount++;
+                Console.WriteLine("Press enter to try again...");
+                Console.ReadKey();
                 Console.Clear();
-                Console.Write("Thanks for playing, ");
-                Console.WriteLine();
+                
+                if (tryCount == 10)
+                {
+                    Console.WriteLine("You're all out of guesses...");
+
+                    string userChoice = "";
+                    Console.Write("Would you like to see the correct combination? (Y/N): ");
+                    userChoice = Console.ReadLine();
+
+                    if (userChoice.ToLower() == "y")
+                    {
+                        Console.Write(masterCombo);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.Write("Thanks for playing...");
+                        Console.WriteLine();
+                        break;
+                    }
+                    break;
+
+                }
+                else if (userInput == masterCombo)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Congratulations! You're a Mastermind...");
+                    Console.WriteLine();
+                    break;
+                }
+
             }
         }
     }
 }
+
