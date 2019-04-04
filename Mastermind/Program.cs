@@ -20,6 +20,7 @@ namespace Mastermind
                 masterCombo += num;
             }
 
+
             //Console.WriteLine(masterCombo);
             int tryCount = 0;
 
