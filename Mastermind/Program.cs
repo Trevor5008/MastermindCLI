@@ -10,7 +10,7 @@ namespace Mastermind
             Random rnd = new Random();
             int num = 0;
             string masterCombo = "";
-
+            // Prompts the user to enter their first number choice
             Console.Write("Please enter a number between 1 and 7 (inclusive): ");
             userInput = Console.ReadLine();
             for (int i = 0; i < 3; i++)
