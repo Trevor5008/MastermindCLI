@@ -20,36 +20,26 @@ namespace Mastermind
                 masterCombo += num;
             }
 
-
             //Console.WriteLine(masterCombo);
             int tryCount = 0;
+            string userInput = "";
 
             while (true)
             {
-
-                string userInput = "";
-
                 for (int i = 0; i < 4; i++)
                 {
-
-                    // Prompts the user to enter their number choice
-                    Console.Write("Please enter a number between 1 and 7 (inclusive): ");
-                    userInput += Console.ReadLine();
-
                     while (true)
                     {
-                        if (invalidInt < 1 || invalidInt > 7)
+
+                        // Prompts the user to enter their number choice
+                        Console.Write("Please enter a number between 1 and 7 (inclusive): ");
+                        userInput += Console.ReadLine();
+                        if (userInput == null)
                         {
-                            userInput.Remove(i);
-                            Console.Write("Please enter a value within range...");
-                            Console.WriteLine();
                             continue;
                         }
-
                         break;
                     }
-
-
                     if (userInput.Substring(i, 1) == masterCombo.Substring(i, 1))
                     {
                         Console.Write("+");
@@ -60,10 +50,7 @@ namespace Mastermind
                         Console.Write("-");
                         Console.WriteLine("");
                     }
-                    //else if (userInput==null)
-                    //{
 
-                    //}
                     else { Console.WriteLine(); }
 
                 }
