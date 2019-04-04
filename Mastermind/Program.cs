@@ -29,23 +29,41 @@ namespace Mastermind
 
                 string userInput = "";
 
-                for (int x = 0; x < 4; x++)
+                for (int i = 0; i < 4; i++)
                 {
 
                     // Prompts the user to enter their number choice
                     Console.Write("Please enter a number between 1 and 7 (inclusive): ");
                     userInput += Console.ReadLine();
 
-                    if (userInput.Substring(x, 1) == masterCombo.Substring(x, 1))
+                    while (true)
+                    {
+                        if (invalidInt < 1 || invalidInt > 7)
+                        {
+                            userInput.Remove(i);
+                            Console.Write("Please enter a value within range...");
+                            Console.WriteLine();
+                            continue;
+                        }
+
+                        break;
+                    }
+
+
+                    if (userInput.Substring(i, 1) == masterCombo.Substring(i, 1))
                     {
                         Console.Write("+");
                         Console.WriteLine("");
                     }
-                    else if (masterCombo.Contains(userInput.Substring(x, 1)))
+                    else if (masterCombo.Contains(userInput.Substring(i, 1)))
                     {
                         Console.Write("-");
                         Console.WriteLine("");
                     }
+                    //else if (userInput==null)
+                    //{
+
+                    //}
                     else { Console.WriteLine(); }
 
                 }
